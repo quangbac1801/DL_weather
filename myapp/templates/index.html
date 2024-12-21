@@ -20,10 +20,12 @@
     <script src="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="static/style.css'">
 
-    <title>OpenLayers with Django</title>
+    <title>Dự báo thời tiết</title>
+
 </head>
+</style>
 <body>
   <div>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D7F9FA;">
@@ -31,19 +33,20 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="{% url 'index'%}">Home</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="{% url 'weather_view' %}">Dự báo dài hạn</a>
+
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="{% url 'weather_chart' %}">Biểu đồ trực quan</a>
             </li>
           </ul>
         </div>
     </nav>
   </div>
-  <br>
+
   <div id="map"></div>
 
   <div style="position: absolute; top: 70px; left: 24px">

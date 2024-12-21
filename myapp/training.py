@@ -70,8 +70,8 @@ def duDoanThoiTiet(year):
 
     print(f"Dự đoán cho tất cả các tỉnh trong năm {year} đã được lưu vào file 'dudoannam_{year}.csv'.")
 
-duDoanThoiTiet(2024)
-dubao = pd.read_csv(os.path.join(dudoan_dir, 'dudoannam_2024.csv'))
+duDoanThoiTiet(2025)
+dubao = pd.read_csv(os.path.join(dudoan_dir, 'dudoannam_2025.csv'))
 goc = pd.read_csv(os.path.join(media_dir, 'dulieududoan.csv'))
 
 contact = pd.concat([goc,dubao])

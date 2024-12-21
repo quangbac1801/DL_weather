@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D7F9FA;">
+        <a class="navbar-brand" href="#"><i class="bi bi-cloud-sun" style="font-size: 1rem;"></i></a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index'%}">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'weather_view' %}">Dự báo dài hạn</a>
+
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'weather_chart' %}">Biểu đồ trực quan</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </div>
+  
+<div class="container mt-5">
+
+    <form id="chartForm">
+        <div class="form-group">
+            <label for="provinceInput">Thành phố:</label>
+            <select id="provinceInput" class="form-control">
+                <option value="">Chọn thành phố</option>
+                {% for province in provinces %}
+                <option value="{{ province }}">{{ province }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="yearInput">Năm:</label>
+            <input type="number" id="yearInput" class="form-control" min="2009" max="2025" value="2024" >
+        </div>
+        <button type="submit" class="btn btn-primary">Hiển Thị</button>
+    </form>
+
+    <div class="mt-5">
+        <h3>Nhiệt độ cao (°C)</h3>
+        <canvas id="maxTempChart" width="400" height="200"></canvas>
+    </div>
+    <div class="mt-5">
+        <h3>Nhiệt độ thấp (°C)</h3>
+        <canvas id="minTempChart" width="400" height="200"></canvas>
+    </div>
+    <div class="mt-5">
+        <h3>Độ ẩm (%)</h3>
+        <canvas id="humidityChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+<script src="{% static 'wchart.js'%}"></script>
+
+
+</body>
+</html>

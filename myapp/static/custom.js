@@ -90,7 +90,7 @@
                               <th>STT</th>
                               <th>Tên tỉnh</th>
                               <th>Nhiệt độ</th>
-                              <th>Lượng mưa</th>
+                              <th>Độ ẩm</th>
                               <th>Code</th>
                               <th>Thời gian dự báo</th>
                           </tr>
@@ -101,7 +101,7 @@
   
       window.listInfor.forEach((infor, index) => {
           const adm1_pcode = infor.adm1_pcode;
-          let maxTemp = '#', minTemp = '#', rainAmount = '#';
+          let maxTemp = '#', minTemp = '#', humidiAmount = '#';
   
           $.ajax({
               url: `/get_weather/${adm1_pcode}/`,
@@ -110,14 +110,14 @@
                   if (weather_data.length) {
                       maxTemp = weather_data[index]?.max?.toFixed(2) || '#';
                       minTemp = weather_data[index]?.min?.toFixed(2) || '#';
-                      rainAmount = weather_data[index]?.rain?.toFixed(2) || '#';
+                      humidiAmount = weather_data[index]?.humidi?.toFixed(2) || '#';
                   }
   
                   html += `<tr>
                               <th>${index + 1}</th>
                               <td>${infor.adm1_en}</td>
                               <td>${minTemp} - ${maxTemp}</td>
-                              <td>${rainAmount}</td>
+                              <td>${humidiAmount}%</td>
                               <td>${adm1_pcode}</td>
                               <td>${Time.toLocaleString()}</td>
                             </tr>`;
@@ -137,3 +137,5 @@
           });
       });
   });
+
+

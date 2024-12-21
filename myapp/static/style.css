@@ -1,14 +1,38 @@
 
-html,
-body {
-  margin: 0;
-  height: 100%;
+.navbar-nav a {
+  position: relative;
+  z-index: 10; /* Đảm bảo liên kết không bị che khuất */
 }
 
-#map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  padding-top: 60px;
-  width: 100%; 
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); 
+  gap: 5px;
+  margin-top: 20px;
 }
+.calendar .day {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+        }
+.calendar .day span {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+}
+.calendar .day .weather-data {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #555;
+}
+.calendar .day .weather-data .temp-max {
+  color: #f00;
+}
+.calendar .day .weather-data .temp-min {
+  color: #00f;
+}
+.calendar .day .weather-data .humidity {
+  color: #080;
+}
+        
